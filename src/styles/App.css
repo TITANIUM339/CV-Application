@@ -1,0 +1,98 @@
+:root {
+    --background: #eeeeee;
+    --tile: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #35374b;
+        --tile: #eeeeee;
+    }
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../assets/fonts/Roboto/Roboto-Light.ttf");
+}
+
+body {
+    background-color: var(--background);
+    font-family: Roboto;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.tile {
+    background-color: var(--tile);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+    all: unset;
+    background-color: #344955;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+}
+
+.button-active {
+    background-color: #50727b;
+}
+
+@media (hover: hover) {
+    button:hover {
+        background-color: #50727b;
+        cursor: pointer;
+    }
+}
+
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input,
+textarea {
+    border-radius: 15px;
+    padding: 5px;
+    background-color: #50727b;
+    color: white;
+    border: none;
+    resize: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+textarea {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

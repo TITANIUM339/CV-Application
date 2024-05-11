@@ -1,0 +1,23 @@
+aside {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 20px;
+    min-width: 300px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.add-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.add-container > button {
+    padding-left: 50px;
+    padding-right: 50px;
+}

@@ -1,0 +1,54 @@
+.cv {
+    flex: 2;
+    aspect-ratio: 1 / calc(sqrt(2));
+    background-color: white;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    width: 100%;
+}
+
+.general-info,
+.educational-exp,
+.practical-exp {
+    padding: 20px;
+}
+
+.educational-exp > h2,
+.practical-exp > h2 {
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+.general-info {
+    background-color: #333333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.general-info > div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.email,
+.phone {
+    display: flex;
+    gap: 5px;
+}
+
+.experience {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+.date {
+    font-size: 1.1rem;
+}
