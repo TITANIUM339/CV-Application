@@ -21,3 +21,10 @@ ul {
     padding-left: 50px;
     padding-right: 50px;
 }
+
+.fonts {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

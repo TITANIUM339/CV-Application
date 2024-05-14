@@ -4,7 +4,6 @@
     background-color: white;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     min-width: 300px;
-    width: 100%;
 }
 
 .general-info,
@@ -26,6 +25,8 @@
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    word-break: break-all;
+    text-align: center;
 }
 
 .general-info > div {
@@ -49,6 +50,20 @@
     gap: 20px;
 }
 
+.experience > div {
+    overflow: hidden;
+}
+
 .date {
     font-size: 1.1rem;
+}
+
+@media print {
+    aside {
+        display: none;
+    }
+
+    .cv {
+        box-shadow: none;
+    }
 }

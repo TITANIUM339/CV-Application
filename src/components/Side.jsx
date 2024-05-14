@@ -11,14 +11,17 @@ export default function Side({
     phone,
     education,
     practical,
+    onClear,
+    onLoad,
     onGeneralChange,
+    onEducationAndPracticalChange,
+    onEducationAndPracticalDelete,
+    onEducationAdd,
+    onPracticalAdd,
 }) {
     const [tab, setTab] = useState("content");
     const [editId, setEditId] = useState(null);
-
-    function logClick() {
-        console.log("click");
-    }
+    const [font, setFont] = useState("Roboto");
 
     return (
         <aside>
@@ -28,9 +31,8 @@ export default function Side({
                 tab={tab}
             ></Nav>
             <Tools
-                onClickClear={logClick}
-                onclickLoadExample={logClick}
-                onClickPrint={logClick}
+                onClickClear={onClear}
+                onClickLoadExample={onLoad}
             ></Tools>
             {(() => {
                 if (tab === "content") {
@@ -71,7 +73,7 @@ export default function Side({
                                 </form>
                             </Box>
                             <Box
-                                title="Educational Experience"
+                                title="Education"
                                 iconUrl="/src/assets/icons/education.svg"
                             >
                                 <ul>
@@ -87,6 +89,12 @@ export default function Side({
                                                 )
                                             }
                                             edit={item.id === editId}
+                                            onDeleteClick={() =>
+                                                onEducationAndPracticalDelete(
+                                                    "education",
+                                                    item.id,
+                                                )
+                                            }
                                         >
                                             <form>
                                                 <label>
@@ -95,6 +103,12 @@ export default function Side({
                                                         type="text"
                                                         name="school"
                                                         value={item.school}
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                     />
                                                 </label>
                                                 <label>
@@ -103,6 +117,12 @@ export default function Side({
                                                         type="text"
                                                         name="study"
                                                         value={item.study}
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                     />
                                                 </label>
                                                 <label>
@@ -111,6 +131,12 @@ export default function Side({
                                                         type="text"
                                                         name="date"
                                                         value={item.date}
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                     />
                                                 </label>
                                             </form>
@@ -118,7 +144,11 @@ export default function Side({
                                     ))}
                                 </ul>
                                 <div className="add-container">
-                                    <button>
+                                    <button
+                                        onClick={() => {
+                                            setEditId(onEducationAdd());
+                                        }}
+                                    >
                                         <img
                                             src="/src/assets/icons/add.svg"
                                             alt="add"
@@ -143,13 +173,25 @@ export default function Side({
                                                 )
                                             }
                                             edit={item.id === editId}
+                                            onDeleteClick={() =>
+                                                onEducationAndPracticalDelete(
+                                                    "practical",
+                                                    item.id,
+                                                )
+                                            }
                                         >
                                             <form>
                                                 <label>
                                                     Company:
                                                     <input
                                                         type="text"
-                                                        name="school"
+                                                        name="company"
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                         value={item.company}
                                                     />
                                                 </label>
@@ -157,8 +199,14 @@ export default function Side({
                                                     Position:
                                                     <input
                                                         type="text"
-                                                        name="study"
+                                                        name="position"
                                                         value={item.position}
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                     />
                                                 </label>
                                                 <label>
@@ -166,9 +214,16 @@ export default function Side({
                                                     <textarea
                                                         name="responsibilities"
                                                         rows="2"
-                                                    >
-                                                        {item.responsibilities}
-                                                    </textarea>
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
+                                                        value={
+                                                            item.responsibilities
+                                                        }
+                                                    ></textarea>
                                                 </label>
                                                 <label>
                                                     Date:
@@ -176,6 +231,12 @@ export default function Side({
                                                         type="text"
                                                         name="date"
                                                         value={item.date}
+                                                        onChange={(event) =>
+                                                            onEducationAndPracticalChange(
+                                                                event,
+                                                                item.id,
+                                                            )
+                                                        }
                                                     />
                                                 </label>
                                             </form>
@@ -183,7 +244,11 @@ export default function Side({
                                     ))}
                                 </ul>
                                 <div className="add-container">
-                                    <button>
+                                    <button
+                                        onClick={() => {
+                                            setEditId(onPracticalAdd());
+                                        }}
+                                    >
                                         <img
                                             src="/src/assets/icons/add.svg"
                                             alt="add"
@@ -195,11 +260,35 @@ export default function Side({
                     );
                 }
 
+                const fonts = [
+                    "monospace",
+                    "sans-serif",
+                    "cursive",
+                    "Roboto",
+                    "Courier",
+                    "Times",
+                ];
+
                 return (
-                    <>
-                        <Box title="Layout"></Box>
-                        <Box title="Font"></Box>
-                    </>
+                    <Box title="Font">
+                        <div className="fonts">
+                            {fonts.map((item, index) => {
+                                return (
+                                    <button
+                                        key={index}
+                                        style={{ fontFamily: item }}
+                                        onClick={() => {
+                                            document.querySelector(".cv").style.fontFamily = item;
+                                            setFont(item);
+                                        }}
+                                        className={font === item ? "button-active" : null}
+                                    >
+                                        {item}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </Box>
                 );
             })()}
         </aside>

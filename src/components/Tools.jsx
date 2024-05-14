@@ -2,8 +2,7 @@ import "../styles/Tools.css";
 
 export default function Tools({
     onClickClear,
-    onclickLoadExample,
-    onClickPrint,
+    onClickLoadExample,
 }) {
     return (
         <div className="tools tile">
@@ -11,11 +10,11 @@ export default function Tools({
                 <img src="/src/assets/icons/clear.svg" alt="" />
                 Clear CV
             </button>
-            <button className="load-example" onClick={onclickLoadExample}>
+            <button className="load-example" onClick={onClickLoadExample}>
                 <img src="/src/assets/icons/load-example.svg" alt="" />
                 Load Example
             </button>
-            <button className="print" onClick={onClickPrint}>
+            <button className="print" onClick={print}>
                 <img src="/src/assets/icons/print.svg" alt="" />
                 Print
             </button>

@@ -46,10 +46,82 @@ function App() {
 
     const [cv, setCv] = useImmer(cvDefault);
 
+    function handleCvClear() {
+        setCv((draft) => {
+            draft.name = "";
+            draft.email = "";
+            draft.phone = "";
+            draft.education = [];
+            draft.practical = [];
+        });
+    }
+
+    function handleLoadExample() {
+        setCv((draft) => {
+            draft.name = cvDefault.name;
+            draft.email = cvDefault.email;
+            draft.phone = cvDefault.phone;
+            draft.education = cvDefault.education;
+            draft.practical = cvDefault.practical;
+        });
+    }
+
     function handleGeneralChange(event) {
         setCv((draft) => {
             draft[event.target.attributes.name.value] = event.target.value;
         });
+    }
+
+    function handleEducationAndPracticalChange(event, id) {
+        setCv((draft) => {
+            const item =
+                draft.education.find((item) => item.id === id) ||
+                draft.practical.find((item) => item.id === id);
+
+            item[event.target.attributes.name.value] = event.target.value;
+        });
+    }
+
+    function handleEducationAndPracticalDelete(category, id) {
+        setCv((draft) => {
+            const itemIndex =
+                category === "education"
+                    ? draft.education.findIndex((item) => item.id === id)
+                    : draft.practical.findIndex((item) => item.id === id);
+
+            draft[category].splice(itemIndex, 1);
+        });
+    }
+
+    function handleEducationAdd() {
+        const id = uuidv4();
+
+        setCv((draft) => {
+            draft.education.push({
+                school: "",
+                study: "",
+                date: "",
+                id,
+            });
+        });
+
+        return id;
+    }
+
+    function handlePracticalAdd() {
+        const id = uuidv4();
+
+        setCv((draft) => {
+            draft.practical.push({
+                company: "",
+                position: "",
+                responsibilities: "",
+                date: "",
+                id,
+            });
+        });
+
+        return id;
     }
 
     return (
@@ -58,9 +130,19 @@ function App() {
                 name={cv.name}
                 email={cv.email}
                 phone={cv.phone}
+                onClear={handleCvClear}
+                onLoad={handleLoadExample}
                 education={cv.education}
                 practical={cv.practical}
                 onGeneralChange={handleGeneralChange}
+                onEducationAndPracticalChange={
+                    handleEducationAndPracticalChange
+                }
+                onEducationAndPracticalDelete={
+                    handleEducationAndPracticalDelete
+                }
+                onEducationAdd={handleEducationAdd}
+                onPracticalAdd={handlePracticalAdd}
             ></Side>
             <Cv
                 name={cv.name}
