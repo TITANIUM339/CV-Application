@@ -30,10 +30,7 @@ export default function Side({
                 onCustomizeClick={() => setTab("customize")}
                 tab={tab}
             ></Nav>
-            <Tools
-                onClickClear={onClear}
-                onClickLoadExample={onLoad}
-            ></Tools>
+            <Tools onClickClear={onClear} onClickLoadExample={onLoad}></Tools>
             {(() => {
                 if (tab === "content") {
                     return (
@@ -278,10 +275,16 @@ export default function Side({
                                         key={index}
                                         style={{ fontFamily: item }}
                                         onClick={() => {
-                                            document.querySelector(".cv").style.fontFamily = item;
+                                            document.querySelector(
+                                                ".cv",
+                                            ).style.fontFamily = item;
                                             setFont(item);
                                         }}
-                                        className={font === item ? "button-active" : null}
+                                        className={
+                                            font === item
+                                                ? "button-active"
+                                                : null
+                                        }
                                     >
                                         {item}
                                     </button>

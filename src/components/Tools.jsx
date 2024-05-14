@@ -1,9 +1,6 @@
 import "../styles/Tools.css";
 
-export default function Tools({
-    onClickClear,
-    onClickLoadExample,
-}) {
+export default function Tools({ onClickClear, onClickLoadExample }) {
     return (
         <div className="tools tile">
             <button className="clear" onClick={onClickClear}>
