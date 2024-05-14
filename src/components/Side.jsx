@@ -47,6 +47,7 @@ export default function Side({
                                             name="name"
                                             value={name}
                                             onChange={onGeneralChange}
+                                            autoComplete="on"
                                         />
                                     </label>
                                     <label>
@@ -56,6 +57,7 @@ export default function Side({
                                             name="email"
                                             value={email}
                                             onChange={onGeneralChange}
+                                            autoComplete="on"
                                         />
                                     </label>
                                     <label>
@@ -65,6 +67,7 @@ export default function Side({
                                             name="phone"
                                             value={phone}
                                             onChange={onGeneralChange}
+                                            autoComplete="on"
                                         />
                                     </label>
                                 </form>
@@ -190,6 +193,7 @@ export default function Side({
                                                             )
                                                         }
                                                         value={item.company}
+                                                        autoComplete="off"
                                                     />
                                                 </label>
                                                 <label>
