@@ -4,6 +4,28 @@ import Cv from "./Cv";
 import "../styles/App.css";
 import { useImmer } from "use-immer";
 
+function localStorageAvailable() {
+    try {
+        const storage = window.localStorage;
+        const x = "__storage_test__";
+        storage.setItem(x, x);
+        storage.removeItem(x);
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+function setItem(key, value) {
+    if (localStorageAvailable())
+        localStorage.setItem(key, JSON.stringify(value));
+}
+
+function getItem(key) {
+    if (localStorageAvailable()) return JSON.parse(localStorage.getItem(key));
+}
+
 function App() {
     const cvDefault = {
         name: "John Smith",
@@ -44,7 +66,7 @@ function App() {
         ],
     };
 
-    const [cv, setCv] = useImmer(cvDefault);
+    const [cv, setCv] = useImmer(getItem("cv") || cvDefault);
 
     function handleCvClear() {
         setCv((draft) => {
@@ -53,6 +75,8 @@ function App() {
             draft.phone = "";
             draft.education = [];
             draft.practical = [];
+
+            setItem("cv", draft);
         });
     }
 
@@ -63,12 +87,16 @@ function App() {
             draft.phone = cvDefault.phone;
             draft.education = cvDefault.education;
             draft.practical = cvDefault.practical;
+
+            setItem("cv", draft);
         });
     }
 
     function handleGeneralChange(event) {
         setCv((draft) => {
             draft[event.target.attributes.name.value] = event.target.value;
+
+            setItem("cv", draft);
         });
     }
 
@@ -79,6 +107,8 @@ function App() {
                 draft.practical.find((item) => item.id === id);
 
             item[event.target.attributes.name.value] = event.target.value;
+
+            setItem("cv", draft);
         });
     }
 
@@ -90,6 +120,8 @@ function App() {
                     : draft.practical.findIndex((item) => item.id === id);
 
             draft[category].splice(itemIndex, 1);
+
+            setItem("cv", draft);
         });
     }
 
