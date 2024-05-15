@@ -3,6 +3,10 @@ import Nav from "./Nav.jsx";
 import Tools from "./Tools.jsx";
 import FormLi from "./FormLi.jsx";
 import "../styles/Side.css";
+import generalInfoIcon from "../assets/icons/general-info.svg";
+import educationIcon from "../assets/icons/education.svg";
+import workIcon from "../assets/icons/work.svg";
+import addIcon from "../assets/icons/add.svg";
 import { useState } from "react";
 
 export default function Side({
@@ -37,7 +41,7 @@ export default function Side({
                         <>
                             <Box
                                 title="General Information"
-                                iconUrl="/src/assets/icons/general-info.svg"
+                                iconUrl={generalInfoIcon}
                             >
                                 <form>
                                     <label>
@@ -74,7 +78,7 @@ export default function Side({
                             </Box>
                             <Box
                                 title="Education"
-                                iconUrl="/src/assets/icons/education.svg"
+                                iconUrl={educationIcon}
                             >
                                 <ul>
                                     {education.map((item) => (
@@ -150,7 +154,7 @@ export default function Side({
                                         }}
                                     >
                                         <img
-                                            src="/src/assets/icons/add.svg"
+                                            src={addIcon}
                                             alt="add"
                                         />
                                     </button>
@@ -158,7 +162,7 @@ export default function Side({
                             </Box>
                             <Box
                                 title="Practical Experience"
-                                iconUrl="/src/assets/icons/work.svg"
+                                iconUrl={workIcon}
                             >
                                 <ul>
                                     {practical.map((item) => (
@@ -251,7 +255,7 @@ export default function Side({
                                         }}
                                     >
                                         <img
-                                            src="/src/assets/icons/add.svg"
+                                            src={addIcon}
                                             alt="add"
                                         />
                                     </button>

@@ -1,4 +1,6 @@
 import "../styles/Cv.css";
+import mailIcon from "../assets/icons/mail.svg";
+import phoneIcon from "../assets/icons/phone.svg";
 
 function Experience({ name, date, children }) {
     return (
@@ -18,8 +20,6 @@ export default function Cv({
     phone,
     education,
     practical,
-    layout,
-    font,
 }) {
     return (
         <section className="cv">
@@ -28,13 +28,13 @@ export default function Cv({
                 <div>
                     {email ? (
                         <div className="email">
-                            <img src="/src/assets/icons/mail.svg" alt="" />
+                            <img src={mailIcon} alt="" />
                             {email}
                         </div>
                     ) : null}
                     {phone ? (
                         <div className="phone">
-                            <img src="/src/assets/icons/phone.svg" alt="" />
+                            <img src={phoneIcon} alt="" />
                             {phone}
                         </div>
                     ) : null}

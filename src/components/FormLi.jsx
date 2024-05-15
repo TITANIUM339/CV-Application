@@ -1,4 +1,6 @@
 import "../styles/FormLi.css";
+import editIcon from "../assets/icons/edit.svg";
+import deleteIcon from "../assets/icons/clear.svg";
 
 export default function FormLi({
     title,
@@ -13,10 +15,10 @@ export default function FormLi({
                 {title}
                 <div>
                     <button onClick={onEditClick}>
-                        <img src="/src/assets/icons/edit.svg" alt="edit" />
+                        <img src={editIcon} alt="edit" />
                     </button>
                     <button onClick={onDeleteClick}>
-                        <img src="/src/assets/icons/clear.svg" alt="delete" />
+                        <img src={deleteIcon} alt="delete" />
                     </button>
                 </div>
             </div>
