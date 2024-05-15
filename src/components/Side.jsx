@@ -76,10 +76,7 @@ export default function Side({
                                     </label>
                                 </form>
                             </Box>
-                            <Box
-                                title="Education"
-                                iconUrl={educationIcon}
-                            >
+                            <Box title="Education" iconUrl={educationIcon}>
                                 <ul>
                                     {education.map((item) => (
                                         <FormLi
@@ -153,10 +150,7 @@ export default function Side({
                                             setEditId(onEducationAdd());
                                         }}
                                     >
-                                        <img
-                                            src={addIcon}
-                                            alt="add"
-                                        />
+                                        <img src={addIcon} alt="add" />
                                     </button>
                                 </div>
                             </Box>
@@ -254,10 +248,7 @@ export default function Side({
                                             setEditId(onPracticalAdd());
                                         }}
                                     >
-                                        <img
-                                            src={addIcon}
-                                            alt="add"
-                                        />
+                                        <img src={addIcon} alt="add" />
                                     </button>
                                 </div>
                             </Box>

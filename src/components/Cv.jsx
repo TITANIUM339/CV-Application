@@ -14,13 +14,7 @@ function Experience({ name, date, children }) {
     );
 }
 
-export default function Cv({
-    name,
-    email,
-    phone,
-    education,
-    practical,
-}) {
+export default function Cv({ name, email, phone, education, practical }) {
     return (
         <section className="cv">
             <div className="general-info">
